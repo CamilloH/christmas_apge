@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,35 +9,153 @@
 <body>
   <div id="snow"></div>
   
+  <!-- Background decorations -->
+  <div class="bg-decorations">
+    <span class="tree tree-1">🌲</span>
+    <span class="tree tree-2">🎄</span>
+    <span class="tree tree-3">🌲</span>
+    <span class="mountain mountain-1">🏔️</span>
+    <span class="tree tree-4">🌲</span>
+    <span class="mountain mountain-2">⛰️</span>
+    <span class="tree tree-5">🎄</span>
+    <span class="tree tree-6">🌲</span>
+    <span class="mountain mountain-3">🏔️</span>
+    <span class="tree tree-7">🌲</span>
+    <span class="tree tree-8">🎄</span>
+    <span class="tree tree-9">🌲</span>
+  </div>
+  
   <main class="card">
     <h1 class="greeting">❤️ Frohe Weihnachten Schatzilein ❤️</h1>
     
     <div class="path-container">
-      <div class="path-step" data-step="1">
-        <div class="present" onclick="openPresent(1)">🎁</div>
-        <div class="image-container" id="image-1"></div>
+      <!-- Step 1 - Left -->
+      <div class="path-row row-left">
+        <div class="path-step" data-step="1">
+          <div class="present-wrapper">
+            <div class="present" onclick="openPresent(1)">🎁</div>
+            <div class="sparkles">✨</div>
+          </div>
+          <div class="content-container" id="content-1">
+            <div class="image-container">
+              <img src="https://images.unsplash.com/photo-1551524559-8af4e6624178?w=400&h=300&fit=crop" alt="Skifahren">
+            </div>
+            <p class="gift-text">🎿 Samstag: Skifahren oder andere outdoor Aktivität</p>
+          </div>
+        </div>
+        <div class="path-decor">🌲</div>
       </div>
       
-      <div class="path-line"></div>
-      
-      <div class="path-step" data-step="2">
-        <div class="present" onclick="openPresent(2)">🎁</div>
-        <div class="image-container" id="image-2"></div>
+      <div class="winding-path path-right">
+        <svg viewBox="0 0 200 60" preserveAspectRatio="none">
+          <path d="M0,30 Q100,60 200,30" stroke="url(#pathGradient)" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <defs>
+            <linearGradient id="pathGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#c41e3a"/>
+              <stop offset="100%" style="stop-color:#ff6b6b"/>
+            </linearGradient>
+          </defs>
+        </svg>
       </div>
       
-      <div class="path-line"></div>
-      
-      <div class="path-step" data-step="3">
-        <div class="present" onclick="openPresent(3)">🎁</div>
-        <div class="image-container" id="image-3"></div>
+      <!-- Step 2 - Right -->
+      <div class="path-row row-right">
+        <div class="path-decor">⛰️</div>
+        <div class="path-step" data-step="2">
+          <div class="present-wrapper">
+            <div class="present" onclick="openPresent(2)">🎁</div>
+            <div class="sparkles">✨</div>
+          </div>
+          <div class="content-container" id="content-2">
+            <div class="image-container">
+              <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400&h=300&fit=crop" alt="Wellness">
+            </div>
+            <p class="gift-text">🧖‍♀️ Samstag Abend Part 1: Im Wellness entspannen</p>
+          </div>
+        </div>
       </div>
       
-      <div class="path-line"></div>
-      
-      <div class="path-step" data-step="4">
-        <div class="present" onclick="openPresent(4)">🎁</div>
-        <div class="image-container" id="image-4"></div>
+      <div class="winding-path path-left">
+        <svg viewBox="0 0 200 60" preserveAspectRatio="none">
+          <path d="M0,30 Q100,0 200,30" stroke="url(#pathGradient2)" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <defs>
+            <linearGradient id="pathGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#ff6b6b"/>
+              <stop offset="100%" style="stop-color:#c41e3a"/>
+            </linearGradient>
+          </defs>
+        </svg>
       </div>
+      
+      <!-- Step 3 - Left -->
+      <div class="path-row row-left">
+        <div class="path-step" data-step="3">
+          <div class="present-wrapper">
+            <div class="present" onclick="openPresent(3)">🎁</div>
+            <div class="sparkles">✨</div>
+          </div>
+          <div class="content-container" id="content-3">
+            <div class="image-container">
+              <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&h=300&fit=crop" alt="Abendessen">
+            </div>
+            <p class="gift-text">🍽️ Samstag Abend Part 2: Lecker abendessen</p>
+          </div>
+        </div>
+        <div class="path-decor">🎄</div>
+      </div>
+      
+      <div class="winding-path path-right">
+        <svg viewBox="0 0 200 60" preserveAspectRatio="none">
+          <path d="M0,30 Q100,60 200,30" stroke="url(#pathGradient)" stroke-width="4" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      
+      <!-- Step 4 - Right -->
+      <div class="path-row row-right">
+        <div class="path-decor">🏔️</div>
+        <div class="path-step" data-step="4">
+          <div class="present-wrapper">
+            <div class="present" onclick="openPresent(4)">🎁</div>
+            <div class="sparkles">✨</div>
+          </div>
+          <div class="content-container" id="content-4">
+            <div class="image-container">
+              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop" alt="Gemütlich">
+            </div>
+            <p class="gift-text">🛋️ Samstag Abend Part 3: Gemütlich sein</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="winding-path path-left">
+        <svg viewBox="0 0 200 60" preserveAspectRatio="none">
+          <path d="M0,30 Q100,0 200,30" stroke="url(#pathGradient2)" stroke-width="4" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      
+      <!-- Step 5 - Center -->
+      <div class="path-row row-center">
+        <div class="path-decor left-decor">🌲</div>
+        <div class="path-step final-step" data-step="5">
+          <div class="present-wrapper">
+            <div class="present present-final" onclick="openPresent(5)">🎁</div>
+            <div class="sparkles">✨</div>
+          </div>
+          <div class="content-container" id="content-5">
+            <div class="image-container">
+              <img src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?w=400&h=300&fit=crop" alt="Frühstück">
+            </div>
+            <p class="gift-text">🥐 Sonntag Früh: Lecker Frühstück</p>
+          </div>
+        </div>
+        <div class="path-decor right-decor">🌲</div>
+      </div>
+    </div>
+    
+    <div class="footer-decor">
+      <span>🎄</span>
+      <span>⭐</span>
+      <span>🎄</span>
     </div>
   </main>
   

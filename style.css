@@ -5,17 +5,57 @@
 }
 
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #1a472a 0%, #2d5a3d 50%, #1a3a27 100%);
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: linear-gradient(180deg, #0a1628 0%, #1a3a5c 30%, #2d5a4a 70%, #1a472a 100%);
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 20px;
+  align-items: flex-start;
+  padding: 30px 20px;
   color: #333;
   overflow-x: hidden;
+  position: relative;
 }
 
+/* Background decorations */
+.bg-decorations {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.tree, .mountain {
+  position: absolute;
+  font-size: 3rem;
+  opacity: 0.3;
+  animation: sway 4s ease-in-out infinite;
+}
+
+.tree-1 { top: 10%; left: 5%; animation-delay: 0s; }
+.tree-2 { top: 30%; left: 2%; font-size: 4rem; animation-delay: 0.5s; }
+.tree-3 { top: 60%; left: 8%; animation-delay: 1s; }
+.tree-4 { top: 15%; right: 3%; animation-delay: 1.5s; }
+.tree-5 { top: 45%; right: 5%; font-size: 4rem; animation-delay: 2s; }
+.tree-6 { top: 75%; right: 2%; animation-delay: 2.5s; }
+.tree-7 { bottom: 20%; left: 3%; animation-delay: 0.3s; }
+.tree-8 { bottom: 10%; right: 8%; font-size: 3.5rem; animation-delay: 0.7s; }
+.tree-9 { bottom: 5%; left: 15%; animation-delay: 1.2s; }
+
+.mountain-1 { top: 20%; right: 10%; font-size: 4rem; opacity: 0.2; }
+.mountain-2 { top: 50%; left: 12%; font-size: 3.5rem; opacity: 0.2; }
+.mountain-3 { bottom: 30%; right: 12%; font-size: 4rem; opacity: 0.2; }
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+/* Snow */
 #snow {
   position: fixed;
   top: 0;
@@ -23,53 +63,160 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 1;
+  z-index: 100;
 }
 
+.snowflake {
+  position: absolute;
+  top: -20px;
+  color: white;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+  animation: snowfall linear infinite;
+}
+
+@keyframes snowfall {
+  0% {
+    transform: translateY(-20px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0.3;
+  }
+}
+
+/* Confetti */
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 1000;
+  animation: confetti-burst 1s ease-out forwards;
+}
+
+@keyframes confetti-burst {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x), var(--y)) rotate(var(--r));
+    opacity: 0;
+  }
+}
+
+/* Main card */
 main.card {
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #fffef9 0%, #fff8e7 100%);
+  border-radius: 20px;
+  box-shadow: 
+    0 25px 80px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(255, 215, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
   max-width: 700px;
   width: 100%;
-  padding: 40px 30px;
+  padding: 50px 30px;
   position: relative;
   z-index: 10;
-  animation: slideIn 0.6s ease-out;
+  animation: cardAppear 1s ease-out;
+  border: 3px solid rgba(196, 30, 58, 0.2);
 }
 
-@keyframes slideIn {
+@keyframes cardAppear {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(50px) scale(0.95);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
+/* Greeting */
 .greeting {
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   margin-bottom: 50px;
   color: #c41e3a;
-  font-weight: 600;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(196, 30, 58, 0.2);
+  animation: pulse 2s ease-in-out infinite;
+  white-space: nowrap;
 }
 
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+/* Path container */
 .path-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 10px;
+}
+
+/* Path rows */
+.path-row {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
   gap: 20px;
 }
 
+.row-left {
+  justify-content: flex-start;
+  padding-left: 20px;
+}
+
+.row-right {
+  justify-content: flex-end;
+  padding-right: 20px;
+}
+
+.row-center {
+  justify-content: center;
+}
+
+/* Path decorations */
+.path-decor {
+  font-size: 2.5rem;
+  opacity: 0.7;
+  align-self: center;
+  animation: gentleBounce 3s ease-in-out infinite;
+}
+
+.left-decor { margin-right: 30px; }
+.right-decor { margin-left: 30px; }
+
+@keyframes gentleBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Path steps */
 .path-step {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  width: 100%;
+  min-width: 200px;
+}
+
+.final-step .present-final {
+  font-size: 5rem;
+}
+
+/* Present wrapper */
+.present-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .present {
@@ -77,82 +224,197 @@ main.card {
   cursor: pointer;
   transition: all 0.3s ease;
   user-select: none;
-  animation: bounce 2s ease-in-out infinite;
+  animation: presentBounce 2s ease-in-out infinite;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
 }
 
 .present:hover {
-  transform: scale(1.2);
+  transform: scale(1.2) rotate(-5deg);
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
 }
 
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+.present.opened {
+  transform: scale(0) rotate(180deg);
+  opacity: 0;
 }
 
-.path-line {
-  width: 4px;
-  height: 40px;
-  background: linear-gradient(to bottom, #c41e3a, #a01830);
-  border-radius: 2px;
-  margin: 10px 0;
-  position: relative;
+@keyframes presentBounce {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-8px) rotate(-3deg); }
+  75% { transform: translateY(-4px) rotate(3deg); }
 }
 
-.path-line::before {
-  content: '';
+/* Sparkles */
+.sparkles {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 12px;
-  height: 12px;
-  background: #c41e3a;
-  border-radius: 50%;
-  box-shadow: 0 0 10px rgba(196, 30, 58, 0.5);
+  font-size: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sparkles.sparkle-burst {
+  animation: sparkleBurst 0.6s ease-out forwards;
+}
+
+@keyframes sparkleBurst {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(3); opacity: 0; }
+}
+
+/* Winding path */
+.winding-path {
+  width: 80%;
+  height: 40px;
+  margin: 5px 0;
+}
+
+.winding-path svg {
+  width: 100%;
+  height: 100%;
+}
+
+.path-right {
+  margin-left: 10%;
+}
+
+.path-left {
+  margin-right: 10%;
+}
+
+/* Content container (image + text) */
+.content-container {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.6s ease;
+  margin-top: 15px;
+  width: 100%;
+}
+
+.content-container.visible {
+  max-height: 400px;
+  opacity: 1;
 }
 
 .image-container {
-  display: none;
-  margin-top: 20px;
-  width: 100%;
-  max-width: 300px;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.2),
+    0 0 0 3px rgba(196, 30, 58, 0.3);
+  margin-bottom: 15px;
 }
 
-.revealed-image {
+.image-container img {
   width: 100%;
   height: auto;
   display: block;
-  opacity: 0;
-  transform: scale(0.8);
-  transition: all 0.5s ease;
+  transition: transform 0.3s ease;
 }
 
+.image-container:hover img {
+  transform: scale(1.05);
+}
+
+.gift-text {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #2d5a3d;
+  font-weight: 600;
+  padding: 12px 15px;
+  background: linear-gradient(135deg, rgba(196, 30, 58, 0.1), rgba(45, 90, 61, 0.1));
+  border-radius: 10px;
+  border-left: 4px solid #c41e3a;
+  line-height: 1.5;
+}
+
+/* Footer decoration */
+.footer-decor {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 50px;
+  padding-top: 30px;
+  border-top: 2px dashed rgba(196, 30, 58, 0.3);
+  font-size: 2.5rem;
+}
+
+.footer-decor span {
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+.footer-decor span:nth-child(2) {
+  animation-delay: 0.5s;
+  color: #ffd700;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.1); }
+}
+
+/* Responsive */
 @media (max-width: 600px) {
+  body {
+    padding: 15px 10px;
+  }
+  
   main.card {
-    padding: 30px 20px;
+    padding: 30px 15px;
   }
 
   .greeting {
-    font-size: 1.8rem;
-    margin-bottom: 40px;
+    font-size: 1.1rem;
+    margin-bottom: 35px;
   }
 
   .present {
     font-size: 3rem;
   }
-
-  .path-line {
-    height: 30px;
+  
+  .final-step .present-final {
+    font-size: 4rem;
   }
 
-  .image-container {
-    max-width: 250px;
+  .path-row {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  
+  .path-step {
+    min-width: 150px;
+  }
+  
+  .path-decor {
+    font-size: 1.8rem;
+  }
+  
+  .left-decor { margin-right: 15px; }
+  .right-decor { margin-left: 15px; }
+  
+  .gift-text {
+    font-size: 0.95rem;
+    padding: 10px 12px;
+  }
+  
+  .winding-path {
+    width: 90%;
+  }
+  
+  .path-right {
+    margin-left: 5%;
+  }
+  
+  .path-left {
+    margin-right: 5%;
+  }
+  
+  .tree, .mountain {
+    font-size: 2rem;
+  }
+  
+  .footer-decor {
+    font-size: 2rem;
+    gap: 20px;
   }
 }
