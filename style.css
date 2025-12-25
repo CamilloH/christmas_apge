@@ -138,13 +138,22 @@ main.card {
 /* Greeting */
 .greeting {
   text-align: center;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   margin-bottom: 50px;
   color: #c41e3a;
   font-weight: 700;
   text-shadow: 2px 2px 4px rgba(196, 30, 58, 0.2);
   animation: pulse 2s ease-in-out infinite;
-  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+.heart {
+  display: inline-block;
+  flex-shrink: 0;
 }
 
 @keyframes pulse {
@@ -364,8 +373,9 @@ main.card {
   }
 
   .greeting {
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin-bottom: 35px;
+    gap: 5px;
   }
 
   .present {
